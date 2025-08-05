@@ -1,0 +1,72 @@
+/* Customers Component Styles */
+
+.customer-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-active {
+  background-color: rgba(72, 187, 120, 0.2);
+  color: #2f855a;
+}
+
+.status-inactive {
+  background-color: rgba(229, 62, 62, 0.2);
+  color: #c53030;
+}
+
+.action-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  width: 12rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(229, 231, 235, 1);
+  padding: 0.5rem 0;
+  z-index: 10;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #4a5568;
+  transition: all 0.15s ease;
+}
+
+.action-item:hover {
+  background-color: rgba(243, 244, 246, 1);
+}
+
+.action-item.delete {
+  color: #e53e3e;
+}
+
+.action-item.delete:hover {
+  background-color: rgba(254, 226, 226, 1);
+}
+
+.action-item svg {
+  width: 1rem;
+  height: 1rem;
+}

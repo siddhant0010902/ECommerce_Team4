@@ -1,0 +1,116 @@
+<!-- Overlay -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" 
+     (click)="onOverlayClick($event)">
+  
+  <!-- Dialog Container -->
+  <div class="bg-white/90 rounded-2xl shadow-lg border border-gray-200 w-full max-w-md max-h-[90vh] overflow-y-auto animate-dialog-open"
+       (click)="$event.stopPropagation()">
+    
+    <!-- Dialog Header -->
+    <div class="p-6 border-b border-gray-200 bg-gray-50 rounded-t-2xl">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold text-gray-800">
+          {{ isEditMode ? 'Edit Product' : 'Add New Product' }}
+        </h2>
+        <button (click)="onClose()" 
+                class="p-2 hover:bg-gray-200 rounded-lg transition-colors duration-200">
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dialog Content -->
+    <form (ngSubmit)="onSubmit()" class="p-6 space-y-4 bg-white">
+      
+      <!-- Product Name -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Product Name</label>
+        <input type="text" [(ngModel)]="formData.name" name="name" required
+               class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+               placeholder="Enter product name">
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+        <textarea [(ngModel)]="formData.description" name="description" rows="3"
+                  class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent resize-none"
+                  placeholder="Enter product description"></textarea>
+      </div>
+
+      <!-- Category -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+        <select [(ngModel)]="formData.category" name="category" required
+                class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent">
+          <option value="">Select Category</option>
+          <option value="T-Shirts">T-Shirts</option>
+          <option value="Jeans">Jeans</option>
+          <option value="Dresses">Dresses</option>
+          <option value="Shoes">Shoes</option>
+          <option value="Accessories">Accessories</option>
+        </select>
+      </div>
+
+      <!-- Brand -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Brand</label>
+        <input type="text" [(ngModel)]="formData.brand" name="brand"
+               class="w-full bg-white/50 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+               placeholder="Enter brand name">
+      </div>
+
+      <!-- Price and Stock Row -->
+      <div class="grid grid-cols-2 gap-4">
+        <!-- Price -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Price (₹)</label>
+          <input type="number" [(ngModel)]="formData.price" name="price" required min="0" step="0.01"
+                 class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+                 placeholder="0.00">
+        </div>
+
+        <!-- Stock -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Stock</label>
+          <input type="number" [(ngModel)]="formData.stock" name="stock" required min="0"
+                 class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+                 placeholder="0">
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+        <select [(ngModel)]="formData.status" name="status" required
+                class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+          <option value="Out of Stock">Out of Stock</option>
+        </select>
+      </div>
+
+      <!-- Image URL -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Image URL</label>
+        <input type="url" [(ngModel)]="formData.image" name="image"
+               class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+               placeholder="https://example.com/image.jpg">
+      </div>
+
+      <!-- Dialog Actions -->
+      <div class="flex gap-3 pt-4 border-t border-gray-200 mt-6 bg-gray-50 -mx-6 -mb-6 p-6 rounded-b-2xl">
+        <button type="button" (click)="onClose()"
+                class="flex-1 bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 px-4 py-3 rounded-xl transition-colors duration-200">
+          Cancel
+        </button>
+        <button type="submit"
+                class="flex-1 bg-gray-800 hover:bg-gray-900 text-white px-4 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-200">
+          {{ isEditMode ? 'Update Product' : 'Add Product' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
