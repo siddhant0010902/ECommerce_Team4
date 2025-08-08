@@ -1,36 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { cartService } from '../../services/cart-Service';
+import { Header } from "../header/header";
+import { Footer } from "../footer/footer";
+import { ProductListItem } from '../../models/product.types';
+import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Header, Footer],
   templateUrl: './cart.html',
   styleUrls: ['./cart.css']
 })
-export class CartComponent {
-  cartItems: any[] = [];
+export class CartComponent implements OnInit, OnDestroy {
+  cartItems: ProductListItem[] = [];
   savedItems: any[] = [];
   couponCode: string = '';
   appliedDiscount: number = 0;
   totalAmount: number = 0;
 
-  constructor(private cartService: cartService) {
-    this.cartItems = this.cartService.getCartItems();
-    this.calculateTotal();
+  // 🐛 FIX: Declare cartSubscription as a class property, not a constructor parameter.
+  cartSubscription!: Subscription;
+
+  // 🐛 FIX: Remove Subscription from the constructor
+  constructor(private cartService: cartService) { }
+
+  ngOnInit(): void {
+    // 🐛 FIX: Assign the subscription result to the class property.
+    this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
+      this.cartItems = items;
+      this.calculateTotal();
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe to prevent memory leaks when the component is destroyed.
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
   changeQuantity(index: number, delta: number): void {
     const item = this.cartItems[index];
-    const newQty = item.quantity + delta;
+    const newQty = (item.quantity ?? 0) + delta;
 
     if (newQty >= 1 && newQty <= 5) {
-      item.quantity = newQty;
-
-      // Trigger UI update
-      this.cartItems = [...this.cartItems];
-      this.calculateTotal();
+      this.cartService.updateQuantity(index, delta);
     } else if (newQty > 5) {
       alert('Maximum quantity allowed is 5.');
     }
@@ -38,7 +55,7 @@ export class CartComponent {
 
   calculateTotal(): void {
     this.totalAmount = this.cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
+      (sum, item) => sum + (item.price * (item.quantity || 1)),
       0
     );
 
@@ -55,7 +72,7 @@ export class CartComponent {
       alert('Coupon applied: ₹50 off!');
     } else if (code === 'DISCOUNT10') {
       const subtotal = this.cartItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
+        (sum, item) => sum + (item.price * (item.quantity || 1)),
         0
       );
       this.appliedDiscount = subtotal * 0.1;
@@ -75,15 +92,14 @@ export class CartComponent {
   }
 
   removeItem(index: number): void {
-    this.cartItems.splice(index, 1);
-    this.cartItems = [...this.cartItems];
+    this.cartService.removeItem(index);
     this.calculateTotal();
   }
 
   saveForLater(index: number): void {
     const item = this.cartItems[index];
     this.savedItems.push(item);
-    this.removeItem(index);
+    this.cartService.removeItem(index);
     alert(`${item.name} has been saved for later.`);
   }
 
@@ -92,7 +108,6 @@ export class CartComponent {
       alert('Your cart is empty!');
       return;
     }
-
     alert(`Payment successful! You paid ₹${this.totalAmount.toFixed(2)}. Thank you!`);
   }
 }

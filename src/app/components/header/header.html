@@ -1,77 +1,85 @@
-<!-- header.component.html -->
-<header class="bg-gray-100 border-b border-gray-300">
-  <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
-    
-    <div class="flex items-center space-x-4 px-4 py-2 bg-gray-100">
-        <img src="assets/icons/logo.png" alt="Search" class="h-5 w-5">
-  <a href="/home" class="text-xl font-bold text-gray-950 ">dummyEcom</a>
-</div>
+<header class="bg-gray-200 text-gray-800 border-b border-gray-300">
+  <div class="max-w-screen-2xl mx-auto px-4 py-4 flex items-center justify-between">
 
-    
-   
-    <nav *ngIf="router.url === '/home'">
-      <ul class="flex space-x-10 text-sm text-gray-700 justify-between">
-        <li><a [routerLink]="['/products']" class="hover:text-black">New Arrivals</a></li>
-        <li><a [routerLink]="['/products']" class="hover:text-black">Sale</a></li>
-        <li><a [routerLink]="['/products']" class="hover:text-black">Deal of the Day</a></li>
-        <li><a [routerLink]="['/products']" class="hover:text-black">Best Seller</a></li>
-        <li><a [routerLink]="['/products']" class="hover:text-black">Support</a></li>
+    <!-- Logo + Store Name -->
+    <div class="flex items-center space-x-2">
+      <i class="bi bi-bag-check-fill text-gray-800 text-2xl"></i>
+      <a routerLink="/home" class="text-3xl font-bold text-gray-900 tracking-wide">MyStore</a>
+    </div>
+
+    <!-- Navigation (Home Page Only) -->
+    <nav *ngIf="router.url === '/home'" class="hidden md:block">
+      <ul class="flex space-x-8 text-base font-medium">
+        <li><a [routerLink]="['/new-arrivals']" class="hover:text-black transition-all duration-200">New Arrivals</a></li>
+        <li><a [routerLink]="['/sale']" class="hover:text-black transition-all duration-200">Sale</a></li>
+        <li><a [routerLink]="['/deals-of-the-day']" class="hover:text-black transition-all duration-200">Deal of the Day</a></li>
+        <li><a [routerLink]="['/aboutus']" class="hover:text-black transition-all duration-200">About Us</a></li>
+        <li><a [routerLink]="['/contactus']" class="hover:text-black transition-all duration-200">Contact Us</a></li>
       </ul>
     </nav>
 
-    <!-- Icons -->
-     
-    <div class="flex space-x-6">
+    <!-- Icons Section -->
+    <div class="flex space-x-6 items-center">
+
+      <!-- Search Toggle Button -->
       <div class="relative">
-    <button (click)="open = !open" class="hover:opacity-80 focus:outline-none">
-      <img src="assets/icons/search.svg" alt="Search" class="h-5 w-5">
-    </button>
-   <!-- Background overlay with blur -->
+        <button (click)="open = !open" class="hover:text-black focus:outline-none transition-colors duration-200 mt-2">
+          <!-- <i class="bi bi-search text-gray-800 mr-2 search-lg"></i> -->
+        </button>
 
-<div
-  *ngIf="open"
-  class="fixed inset-0 bg-gray-100 bg-opacity-30 backdrop-blur-md z-10"
-  (click)="closeSearchBox()">
-  <!-- Stop click from propagating to the background -->
-  <div class="fixed right-0 w-80 bg-gray-100 border border-gray-300 rounded-lg shadow-lg z-20 mt-4" (click)="$event.stopPropagation()">
-    <form class="p-4">
-      <div class="flex items-center border border-gray-300 rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500 bg-white">
-        <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z" />
-        </svg>
-        <input type="text" placeholder="Search" class="w-full outline-none bg-transparent text-gray-700" />
+        <!-- Search Overlay -->
+        <div *ngIf="open" class="fixed inset-0 bg-gray-200 bg-opacity-30 backdrop-blur-sm z-10" (click)="closeSearchBox()">
+          <div class="fixed top-20 right-4 w-80 max-w-full bg-white border border-gray-200 rounded-lg shadow-xl z-20" (click)="$event.stopPropagation()">
+
+            <!-- Search Form -->
+            <form class="p-4">
+              <div class="flex items-center border border-gray-300 rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500 bg-white">
+                <svg class="w-5 h-5 text-gray-500 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M16.65 16.65A7.5 7.5 0 1116.65 2.5a7.5 7.5 0 010 14.15z" />
+                </svg>
+                <input type="text" placeholder="Search" class="w-full outline-none bg-transparent text-gray-700" />
+              </div>
+              <button type="submit" class="mt-3 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Search</button>
+            </form>
+
+            <!-- Quick Links -->
+            <div class="px-4 pb-4">
+              <h3 class="text-sm font-semibold text-gray-700 mb-2">Search Products</h3>
+              <ul class="space-y-1 text-sm text-gray-700">
+                <li><a href="#" class="flex items-center justify-between hover:underline">New Arrivals <span class="text-gray-400">→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between hover:underline">Sale <span class="text-gray-400">→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between hover:underline">Deal of the Day <span class="text-gray-400">→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between hover:underline">Best Seller <span class="text-gray-400">→</span></a></li>
+                <li><a href="#" class="flex items-center justify-between hover:underline">Support <span class="text-gray-400">→</span></a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
       </div>
-      <button type="submit" class="mt-3 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Search</button>
-    </form>
 
-    <div class="px-4 pb-4">
-      <h3 class="text-sm font-semibold text-gray-700 mb-2">Quick Links</h3>
-      <ul class="space-y-1 text-sm text-gray-700">
-        <li><a href="#" class="flex items-center justify-between hover:underline">Links <span class="text-gray-400">→</span></a></li>
-        <li><a href="#" class="flex items-center justify-between hover:underline">Links <span class="text-gray-400">→</span></a></li>
-        <li><a href="#" class="flex items-center justify-between hover:underline">Links <span class="text-gray-400">→</span></a></li>
-        <li><a href="#" class="flex items-center justify-between hover:underline">Links <span class="text-gray-400">→</span></a></li>
-        <li><a href="#" class="flex items-center justify-between hover:underline">Links  <span class="text-gray-400">→</span></a></li>
-      </ul>
+      <!-- Login/Register or Greeting -->
+      <div class="flex space-x-2 items-center text-base font-medium text-gray-800">
+        <ng-container *ngIf="currentUser; else guestLinks">
+          <span class="hover:text-black transition-colors duration-200">Hi, {{ currentUser.username }}</span>
+        </ng-container>
+        <ng-template #guestLinks>
+          <a class="hover:text-black transition-colors duration-200" routerLink="/login">Login</a>
+          <span>/</span>
+          <a class="hover:text-black transition-colors duration-200" routerLink="/register">Register</a>
+        </ng-template>
+      </div>
+
+      <!-- Cart Icon -->
+      <a [routerLink]="['/home/cart']" class="hover:text-black transition-colors duration-200 mt-1">
+        <i class="bi bi-cart2 text-gray-800 mr-1 icon-lg"></i>
+      </a>
+
+      <!-- Profile Icon -->
+      <a routerLink="/login" class="hover:text-black transition-colors duration-200 mt-1">
+        <i class="bi bi-person text-gray-800 mr-2 icon-lg"></i>
+      </a>
     </div>
-  </div>
-</div>
 
-
-
-  </div>
-      <button class="hover:opacity-80" [routerLink]="['/home/cart']" >
-        
-            <img src="assets/icons/cart.svg" alt="Cart" class="h-5 w-5">
-        
-      </button>
-      <button class="hover:opacity-80">
-        <a href="#">
-            <img src="assets/icons/login.svg" alt="Login" class="h-5 w-5">
-        </a>
-      </button>
-    </div>
   </div>
 </header>
-
-

@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { products } from '../product-list-page/products-list/products.data';
+ import { Injectable } from '@angular/core';
+ import { products } from '../components/products-list/products.data';
 
 
-export class Productservice {
+ export class Productservice {
 
 
-  getProductList() {
-    return products;
-  }
-  
+   getProductList() {
+     return products;
+   }
+
 }

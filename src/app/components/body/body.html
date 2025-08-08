@@ -1,33 +1,64 @@
-<div class="bg-white py-8 px-4">
+<div class="bg-white py-6 px-4 md:px-8">
+  <div class="w-full max-w-screen-2xl mx-auto">
+    <h1 class="text-gray-900 text-2xl font-semibold mb-8 tracking-tight">Top Rated Brands</h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Image 1 -->
-    <div class="text-center relative">
-  <img src="assets/images/image1.avif" alt="Look 1" class="w-full h-auto object-cover" />
-  <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-3 py-1 rounded text-sm font-semibold">
-    {{ 4999 | currency:'INR':'symbol':'1.0-0'}}
-  </span>
-</div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
 
-    <!-- Image 2 -->
-    <div class="text-center relative">
-      <img src="assets/images/image2.avif" alt="Look 2" class="w-full h-auto object-cover" />
-      <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-3 py-1 rounded text-sm font-semibold">
-        {{1200 | currency:'INR':'symbol':'1.0-0'}}
-      </span>
-    </div>
+      <!-- Product Block 1 -->
+      <div class="group relative h-72 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden">
+        <img src="assets/images/image1.avif" alt="Look 1"
+          class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
+        <div class="absolute bottom-0 left-0 w-full bg-white bg-opacity-95 px-3 py-2">
+          <p class="text-base font-semibold text-gray-900 text-center tracking-wide group-hover:text-primary transition duration-200">
+            H&M
+          </p>
+        </div>
+      </div>
 
-    <!-- Image 3 -->
-    <div class="text-center relative">
-      <img src="assets/images/image3.avif" alt="Look 3" class="w-full h-auto object-cover" />
-      <span class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white px-3 py-1 rounded text-sm font-semibold">
-        {{1800
-        | currency:'INR':'symbol':'1.0-0'}}
-      </span>
-    </div>
-      
+      <!-- Product Block 2 -->
+      <div class="group relative h-72 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden">
+        <img src="assets/images/image2.avif" alt="Look 2"
+          class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
+        <div class="absolute bottom-0 left-0 w-full bg-white bg-opacity-95 px-3 py-2">
+          <p class="text-base font-semibold text-gray-900 text-center tracking-wide group-hover:text-primary transition duration-200">
+            Zara
+          </p>
+        </div>
+      </div>
+
+      <!-- Product Block 3 -->
+      <div class="group relative h-72 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden">
+        <img src="assets/images/image3.avif" alt="Look 3"
+          class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
+        <div class="absolute bottom-0 left-0 w-full bg-white bg-opacity-95 px-3 py-2">
+          <p class="text-base font-semibold text-gray-900 text-center tracking-wide group-hover:text-primary transition duration-200">
+            Levi's
+          </p>
+        </div>
+      </div>
+
+      <!-- Product Block 4 -->
+      <div class="group relative h-72 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden">
+        <img src="https://i.pinimg.com/736x/33/75/56/337556bd090dad8ef08e518d2577e34d.jpg" alt="Look 4"
+          class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
+        <div class="absolute bottom-0 left-0 w-full bg-white bg-opacity-95 px-3 py-2">
+          <p class="text-base font-semibold text-gray-900 text-center tracking-wide group-hover:text-primary transition duration-200">
+            Jack & Jones
+          </p>
+        </div>
+      </div>
+
+      <!-- Product Block 5 -->
+      <div class="group relative h-72 bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden">
+        <img src="https://thfvnext.bing.com/th/id/OIP.JgPavpmmlw6UNP09QAhSvAHaJ_?w=164&h=220&c=7&r=0&o=5&cb=thfvnext&dpr=1.5&pid=1.7" alt="Look 5"
+          class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105" />
+        <div class="absolute bottom-0 left-0 w-full bg-white bg-opacity-95 px-3 py-2">
+          <p class="text-base font-semibold text-gray-900 text-center tracking-wide group-hover:text-primary transition duration-200">
+            Roadster
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
-
-
-
+</div>
