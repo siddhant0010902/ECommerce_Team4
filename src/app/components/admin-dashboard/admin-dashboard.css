@@ -1,0 +1,145 @@
+/* Admin Dashboard Styles */
+.sidebar-transition {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Custom scrollbar for main content */
+main::-webkit-scrollbar {
+  width: 6px;
+}
+
+main::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Active navigation state */
+.router-link-active {
+  background-color: #374151 !important;
+  color: white !important;
+}
+
+/* Hover effects */
+.hover\:bg-gray-700:hover {
+  background-color: #374151;
+}
+
+.hover\:text-white:hover {
+  color: white;
+}
+
+/* Transition effects */
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+.transition-colors {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.admin-dashboard-shell {
+  display: flex;
+  height: 100vh;
+  background: #f3f4f6;
+}
+
+.admin-sidebar-fixed {
+  width: 250px;
+  background: #ffffff;
+  color: #374151;
+  box-shadow: 2px 0 16px rgba(0,0,0,0.07);
+  z-index: 1;
+  position: relative;
+  min-height: 100vh;
+}
+
+.admin-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #f3f4f6;
+}
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 0 32px;
+  height: 72px;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.admin-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.01em;
+}
+
+.admin-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-user-avatar {
+  width: 40px;
+  height: 40px;
+  background: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.admin-user-name {
+  font-weight: 600;
+  color: #222;
+  font-size: 1rem;
+}
+
+.admin-user-role {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.admin-content-area {
+  flex: 1;
+  padding: 32px 32px 24px 32px;
+  background: #f3f4f6;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar-fixed {
+    width: 60px;
+    min-width: 60px;
+  }
+  .admin-main-area {
+    padding-left: 0;
+  }
+  .admin-content-area {
+    padding: 16px 8px;
+  }
+}

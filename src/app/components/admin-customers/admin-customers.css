@@ -1,0 +1,186 @@
+.admin-customers {
+  padding: 20px;
+}
+
+.customers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.customers-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.add-customer-btn {
+  background: linear-gradient(135deg, #222b45 0%, #667eea 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.add-customer-btn:hover {
+  transform: translateY(-2px);
+}
+
+.customers-table-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+}
+
+.customers-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customers-table th {
+  background: #f9fafb;
+  padding: 15px 20px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.customers-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #6b7280;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.customers-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.customer-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #222b45 0%, #667eea 100%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50%;
+  margin-right: 12px;
+  float: left;
+}
+
+.customer-info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.customer-name {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.customer-id {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.actions {
+  position: relative;
+}
+
+.actions-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0 8px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.actions-btn:hover {
+  background: #f3f4f6;
+}
+
+.actions-menu {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  min-width: 160px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.actions-menu button {
+  background: none;
+  border: none;
+  color: #374151;
+  font-size: 0.95rem;
+  text-align: left;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions-menu button:hover {
+  background: #f3f4f6;
+}
+
+.actions-menu .delete {
+  color: #ef4444;
+}
+
+@media (max-width: 768px) {
+  .customers-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+  .add-customer-btn {
+    align-self: flex-end;
+  }
+  .customers-table th, .customers-table td {
+    padding: 10px 8px;
+  }
+}

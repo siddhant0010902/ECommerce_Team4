@@ -1,0 +1,53 @@
+<div class="admin-customers">
+  <div class="customers-header">
+    <h2>Customer Management</h2>
+    <button class="add-customer-btn">+ Add New Customer</button>
+  </div>
+
+  <div class="customers-table-container">
+    <table class="customers-table">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Contact</th>
+          <th>Status</th>
+          <th>Join Date</th>
+          <th>Orders</th>
+          <th>Total Spent</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers; let i = index">
+          <td>
+            <div class="customer-avatar">{{ customer.name.charAt(0) }}</div>
+            <div class="customer-info">
+              <div class="customer-name">{{ customer.name }}</div>
+              <div class="customer-id">ID: {{ customer.id }}</div>
+            </div>
+          </td>
+          <td>
+            <div>{{ customer.email }}</div>
+            <div>{{ customer.phone }}</div>
+          </td>
+          <td>
+            <span class="status-badge" [class.status-active]="customer.status === 'Active'" [class.status-inactive]="customer.status !== 'Active'">
+              {{ customer.status }}
+            </span>
+          </td>
+          <td>{{ customer.joinDate }}</td>
+          <td>{{ customer.orders }}</td>
+          <td>₹{{ customer.totalSpent.toLocaleString() }}</td>
+          <td class="actions">
+            <button class="actions-btn" (click)="showActions(i)">⋮</button>
+            <div class="actions-menu" *ngIf="showActionsIndex === i" (mouseleave)="hideActions()">
+              <button (click)="viewDetails(customer)"><span>👁️</span> View Details</button>
+              <button (click)="editCustomer(customer)"><span>✏️</span> Edit Customer</button>
+              <button class="delete" (click)="deleteCustomer(customer)"><span>🗑️</span> Delete Customer</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.rating-stars {
+  display: flex;
+  gap: 1px; /* Smaller gap between stars */
+  flex-wrap: wrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.star-icon {
+  color: gold;
+  font-size: 15px;
+}

@@ -1,0 +1,60 @@
+/* styles.css */
+.icon-lg {
+  font-size: 24px; /* Adjust the pixel value to your desired size */
+}
+.search-lg {
+  font-size: 20px; /* Adjust the pixel value to your desired size */
+}
+.logo-lg{
+  font-size:25px;
+}
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-actions a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.user-actions a:hover {
+    text-decoration: underline;
+}
+
+.welcome-message {
+  font-weight: 500;
+  color: #5a5a5a;
+}
+
+.logout-button {
+  background-color: transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.logout-button:hover {
+    background-color: #007bff;
+    color: white;
+}

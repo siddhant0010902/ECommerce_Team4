@@ -1,0 +1,29 @@
+/* You can place this in shopping-bag.component.css or global styles */
+
+.product-card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
+  background-color: #fefefe;
+}
+
+.product-img-hover {
+  transition: transform 0.3s ease;
+}
+.product-card-hover:hover .product-img-hover {
+  transform: scale(1.06);
+}
+
+.btn-hover:hover {
+  background-color: #212529;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.action-btn-hover:hover {
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+  transform: scale(1.03);
+  transition: all 0.2s ease;
+}

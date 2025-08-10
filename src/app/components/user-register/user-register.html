@@ -1,0 +1,88 @@
+<div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 50%, #e2e8f0 100%);">
+  <div class="bg-white/20 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/30 w-full max-w-md">
+    <div class="flex items-center justify-center mb-6">
+      <i class="bi bi-bag-check-fill text-gray-800 text-2xl"></i>
+      <h1 class="ml-1 text-2xl font-bold text-gray-800">MyStore</h1>
+    </div>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6 drop-shadow-sm">User Registration</h2>
+
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+        <input id="username" formControlName="username" type="text" placeholder="Enter your name"
+               class="w-full px-3 py-2 border border-white/30 bg-white/50 backdrop-blur-sm rounded-xl shadow focus:outline-none focus:shadow-outline text-gray-700 transition-all duration-300" />
+        <div *ngIf="f['username'].touched && f['username'].invalid" class="text-red-500 text-sm mt-1">
+          <div *ngIf="f['username'].errors?.['required']">Username is required.</div>
+          <div *ngIf="f['username'].errors?.['minlength']">Minimum 3 characters required.</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+        <input id="email" formControlName="email" type="email" placeholder="Enter your email"
+               class="w-full px-3 py-2 border border-white/30 bg-white/50 backdrop-blur-sm rounded-xl shadow focus:outline-none focus:shadow-outline text-gray-700 transition-all duration-300" />
+        <div *ngIf="f['email'].touched && f['email'].invalid" class="text-red-500 text-sm mt-1">
+          <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+          <div *ngIf="f['email'].errors?.['email']">Enter a valid email address.</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
+        <input id="phone" formControlName="phone" type="tel" placeholder="Enter phone number"
+               class="w-full px-3 py-2 border border-white/30 bg-white/50 backdrop-blur-sm rounded-xl shadow focus:outline-none focus:shadow-outline text-gray-700 transition-all duration-300" />
+        <div *ngIf="f['phone'].touched && f['phone'].invalid" class="text-red-500 text-sm mt-1">
+          <div *ngIf="f['phone'].errors?.['required']">Phone number is required.</div>
+          <div *ngIf="f['phone'].errors?.['pattern']">Enter a valid 10-digit phone number.</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Gender</label>
+        <select formControlName="gender"
+                class="w-full px-3 py-2 border border-white/30 bg-white/50 backdrop-blur-sm rounded-xl shadow focus:outline-none focus:shadow-outline text-gray-700 transition-all duration-300">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <div *ngIf="f['gender'].touched && f['gender'].invalid" class="text-red-500 text-sm mt-1">
+          <div *ngIf="f['gender'].errors?.['required']">Gender is required.</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+        <input id="user-password" formControlName="password" type="password" placeholder="Enter password"
+               class="w-full px-3 py-2 border border-white/30 bg-white/50 backdrop-blur-sm rounded-xl shadow focus:outline-none focus:shadow-outline text-gray-700 transition-all duration-300" />
+        <div *ngIf="f['password'].touched && f['password'].invalid" class="text-red-500 text-sm mt-1">
+          <div *ngIf="f['password'].errors?.['required']">Password is required.</div>
+          <div *ngIf="f['password'].errors?.['minlength']">Minimum 6 characters required.</div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label for="confirmPassword" class="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="Confirm password"
+               class="w-full px-3 py-2 border border-white/30 bg-white/50 backdrop-blur-sm rounded-xl shadow focus:outline-none focus:shadow-outline text-gray-700 transition-all duration-300" />
+        <div *ngIf="f['confirmPassword'].touched && f['confirmPassword'].invalid" class="text-red-500 text-sm mt-1">
+          <div *ngIf="f['confirmPassword'].errors?.['required']">Confirm password is required.</div>
+        </div>
+        <div *ngIf="registrationForm.hasError('passwordMismatch') && (f['confirmPassword'].touched || f['password'].touched)" class="text-red-500 text-sm mt-1">
+          Passwords do not match.
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="!registrationForm.valid"
+              class="w-full bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline disabled:opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+        Register
+      </button>
+    </form>
+
+    <div class="mt-6 text-center">
+      <span class="text-gray-600">Already have an account?</span>
+      <a class="ml-2 text-gray-700 hover:text-gray-900 hover:underline transition-colors duration-300" routerLink="/login" >Login here</a>
+    </div>
+  </div>
+</div>
