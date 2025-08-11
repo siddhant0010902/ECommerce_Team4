@@ -13,10 +13,13 @@ import { DealsOfTheDay } from './components/deals-of-the-day/deals-of-the-day';
 import { Sale } from './components/sale/sale';
 import { ContactUs } from './components/contact-us/contact-us';
 import { UserProfileComponent } from './components/user-profile/user-profile';
+import { Component } from '@angular/core';
+import { AdminLoginComponent } from './components/admin-login/admin-login';
 
 export const routes: Routes = [
     { path: "home", component: Home },
     { path: "", redirectTo: "home", pathMatch: "full" },
+    {path:"admin-login",component : AdminLoginComponent},
     {path: "home/cart", component: CartComponent},
     {path: "products", component: ProductPage},
     {path: "products-list", component: ProductsList},
